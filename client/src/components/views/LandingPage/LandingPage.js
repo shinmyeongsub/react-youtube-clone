@@ -26,14 +26,14 @@ function LandingPage() {
         var seconds = Math.floor((video.duration - minutes*60));   //duration이 초 단위로 나오므로 계산해줘야 함
 
         return <Col lg={6} md={8} xs={24}>
+            <div style={{position:'relative'}}>
             <a href={`/video/${video._id}`}>
-                <div style={{position:'relative'}}>
-                    <img style={{width:'100%'}} src={`http://localhost:5000/${video.thumbnail}`} alt="thumbnail"/>
-                    <div className="duration">
-                        <span>{minutes} : {seconds}</span>
-                    </div>
+                <img style={{width:'100%'}} src={`http://localhost:5000/${video.thumbnail}`} alt="thumbnail"/>
+                <div className="duration">
+                    <span>{minutes} : {seconds}</span>
                 </div>
             </a>
+            </div>
             <br/>
             <Meta
                 avatar={
