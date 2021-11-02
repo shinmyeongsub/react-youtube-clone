@@ -1,46 +1,41 @@
-import React, { useEffect, useState } from 'react'
-import { FaCode } from "react-icons/fa";
-import { Card, Icon, Avatar, Col, Typography, Row } from "antd";
+import React, {useEffect, useState} from 'react'
+import {Card, Avatar, Col, Typography, Row} from 'antd';
 import Axios from 'axios';
 import moment from 'moment';
 
-const { Title } = Typography;
-const { Meta } = Card;
+const {Title}= Typography;
+const {Meta} = Card;
 
 function SubscriptionPage() {
-
-    const [Video, setVideo] = useState([]);
+    const [Video, setVideo] = useState([])
 
     useEffect(() => {
-
-        const subscriptionVariables = {
-            userFrom : localStorage.getItem('userId')
+        let subscriptionVariables={
+            userFrom:localStorage.getItem('userId')
         }
-
-
         Axios.post('/api/video/getSubscriptionVideos', subscriptionVariables)
-            .then(response => {
+            .then(response=>{
                 if(response.data.success){
-                    setVideo(response.data.videos);
-                } else {
-                    alert('비디오 가져오기를 실패 했습니다.');
+                    setVideo(response.data.videos)
+                }else{
+                    alert('비디오 가져오기를 실패했습니다.')
                 }
             })
     }, [])
 
-    const renderCards = Video.map((video, index) => {
+    const renderCards=Video.map((video, index)=>{
         var minutes = Math.floor(video.duration / 60);
-        var seconds = Math.floor((video.duration - minutes*60));   //duration이 초 단위로 나오므로 계산해줘야 함
+        var seconds = Math.floor((video.duration - minutes*60));
 
         return <Col lg={6} md={8} xs={24}>
-            <div style={{position:'relative'}}>
             <a href={`/video/${video._id}`}>
-                <img style={{width:'100%'}} src={`http://localhost:5000/${video.thumbnail}`} alt="thumbnail"/>
-                <div className="duration">
-                    <span>{minutes} : {seconds}</span>
+                <div style={{position:'relative'}}>
+                    <img style={{width:'100%'}} src={`http://localhost:5000/${video.thumbnail}`} alt="thumbnail"/>
+                    <div className="duration">
+                        <span>{minutes} : {seconds}</span>
+                    </div>
                 </div>
             </a>
-            </div>
             <br/>
             <Meta
                 avatar={
@@ -55,11 +50,10 @@ function SubscriptionPage() {
     })
 
     return (
-        <div style={{ width: '85%', margin: '3rem auto' }}>
-            <Title level={2}> Recommeded </Title>
-            <hr />
+        <div style={{width:'85%', margin:'3rem auto'}}>
+            <Title level={2}>Subscription</Title>
+            <hr/>
             <Row gutter={[32, 16]}>
-
                 {renderCards}
             </Row>
         </div>

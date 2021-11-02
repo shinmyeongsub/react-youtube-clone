@@ -15,7 +15,7 @@ const dislikeSchema = mongoose.Schema({
         ref : 'Video'
     }
 
-},{timestamps : true})
+},{ timestamps: true })
 
 const Dislike = mongoose.model('Dislike',dislikeSchema);
 
