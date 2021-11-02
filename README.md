@@ -7,6 +7,8 @@
 ### Used DB : &nbsp; <img src= "https://img.shields.io/badge/MongoDB-47A248?style=for-the-badge&logo=MongoDB&logoColor=white">
 ### Period :
 2021/10/22 ~ 2021/11/01
+### Modify Period :
+2021/11/02 ~ ing
 ### Function of Contents : 
 * Video Upload
 * Save the Video Files
