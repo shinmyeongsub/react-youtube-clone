@@ -1,18 +1,18 @@
-Hello, My Friends  
-Thank you for having interest in this repository ! 
-
-To use this application, 
-
-1. make dev.js file inside config folder 
-2. put mongoDB info into dev.js file 
-3. Type  " npm install " inside the root directory  ( Download Server Dependencies ) 
-4. Type " npm install " inside the client directory ( Download Front-end Dependencies )
-
-
-If you have problem, feel free to ask me ^^ 
-
-You can watch the tutorial for this app.
-
-https://www.youtube.com/channel/UCFyXA9x8lpL3EYWeYhj4C4Q?view_as=subscriber
-
-
+## Title : React Study
+### Subtitle : Youtube Clone Project
+### Lecturer : Produced by John Ahn
+### Copyright : Inflearn
+### Used Langauge : &nbsp; <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=JavaScript&logoColor=white">
+### Used Skills : &nbsp; <img src="https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=React&logoColor=white"> &nbsp; <img src="https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=Node.js&logoColor=white">
+### Used DB : &nbsp; <img src= "https://img.shields.io/badge/MongoDB-47A248?style=for-the-badge&logo=MongoDB&logoColor=white">
+### Period :
+2021/10/22 ~ 2021/11/01
+### Function of Contents : 
+* Video Upload
+* Save the Video Files
+* Create Video Thumbnail
+* Detail Video Page
+* Subsscribe Function
+* Subscribe Video Page
+* Create Comment Function
+* Like, DisLike function
