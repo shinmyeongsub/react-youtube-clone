@@ -17,8 +17,10 @@ function VideoDetailPage(props) {
     useEffect(() => {
         Axios.post('/api/video/getVideoDetail', variable)
             .then(response=>{
+                console.log(response)
                 if(response.data.success){
                     setVideoDetail(response.data.videoDetail)
+                    console.log(VideoDetail);
                 }else{
                     alert('비디오 정보를 가져오기에 실패했습니다.')
                 }
@@ -37,10 +39,9 @@ function VideoDetailPage(props) {
     const refreshFunction=(newComment)=>{
         setComments(Comments.concat(newComment))
     }
+
     if(VideoDetail.writer){     // image 정보를 가져오기 전에 화면이 rendering 되어서 error >>  writer가 존재할 경우 rendering 되도록 한 것.
         const subscribeButton = VideoDetail.writer._id !== localStorage.getItem('userId') && <Subscribe userTo={VideoDetail.writer._id} userFrom={localStorage.getItem('userId')}/>
-
-        
         return (
             <div>
                 <Row gutter={[16, 16]}>
