@@ -1,4 +1,4 @@
-## Title : React Study
+## Subject : React Study
 ### Subtitle : Youtube Clone Project
 ### Lecturer : Produced by John Ahn
 ### Copyright : Inflearn
