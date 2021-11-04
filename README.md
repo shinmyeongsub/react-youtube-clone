@@ -1,5 +1,5 @@
 ## Subject : React Study
-### Subtitle : Youtube Clone Project
+### Title : Youtube Clone Project
 ### Lecturer : Produced by John Ahn
 ### Copyright : Inflearn
 ### Used Langauge : &nbsp; <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=JavaScript&logoColor=white">
