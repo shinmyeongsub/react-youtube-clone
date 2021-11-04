@@ -7,18 +7,12 @@ function LikeDislikes(props) {
     const [Dislikes, setDislikes] = useState(0)
     const [LikeAction, setLikeAction] = useState(null)
     const [DisLikeAction, setDisLikeAction] = useState(null)
-    
     let variable={};
+
     if(props.video){
-        variable={
-            userId:props.userId,
-            videoId:props.videoId
-        }
+       variable = { videoId: props.videoId, userId: props.userId }
     }else{
-        variable={
-            userId:props.userId,
-            commentId:props.commentId
-        }
+        variable = { commentId: props.commentId, userId: props.userId }
     }
     
     useEffect(() => {
@@ -29,7 +23,7 @@ function LikeDislikes(props) {
                     setLikes(response.data.likes.length)
 
                     //내가 이미 좋아요를 눌렀는지
-                    response.data.likes.map((like, i)=>{
+                    response.data.likes.map( like => {
                         if(like.userId === props.userId){
                             setLikeAction('liked')
                         }
@@ -45,8 +39,8 @@ function LikeDislikes(props) {
                     setDislikes(response.data.dislikes.length)
 
                     //내가 이미 싫어요를 눌렀는지
-                    response.data.dislikes.map((dislikes, i)=>{
-                        if(dislikes.userId === props.userId){
+                    response.data.dislikes.map(dislike => {
+                        if(dislike.userId === props.userId){
                             setDisLikeAction('disliked')
                         }
                     })
@@ -61,8 +55,8 @@ function LikeDislikes(props) {
             Axios.post('/api/like/upLike', variable)
                 .then(response=>{
                     if(response.data.success){
-                        setLikeAction('liked')
                         setLikes(Likes + 1)
+                        setLikeAction('liked')
                         if(DisLikeAction !== null){
                             setDisLikeAction(null)
                             setDislikes(Dislikes - 1)
@@ -75,21 +69,21 @@ function LikeDislikes(props) {
             Axios.post('/api/like/unLike', variable)
                 .then(response=>{
                     if(response.data.success){
-                        setLikeAction(null)
                         setLikes(Likes - 1)
+                        setLikeAction(null)
                     }else{
                         alert('좋아요 정보를 삭제하지 못했습니다.')
                     }
                 })
         }
     }
-    const onDislike = ()=>{
+    const onDisLike = ()=>{
         if(DisLikeAction === null){
             Axios.post('/api/like/upDislike', variable)
                 .then(response=>{
                     if(response.data.success){
-                        setDisLikeAction('disliked')
                         setDislikes(Dislikes + 1)
+                        setDisLikeAction('disliked')
                         if(LikeAction !== null){
                             setLikeAction(null)
                             setLikes(Likes - 1)
@@ -112,7 +106,7 @@ function LikeDislikes(props) {
     }
 
     return (
-        <div>
+        <React.Fragment>
             <span key="comment-basic-like">
                 <Tooltip title="Like">
                     <Icon type="like"
@@ -126,12 +120,12 @@ function LikeDislikes(props) {
                 <Tooltip title="Dislike">
                     <Icon type="dislike"
                         theme={DisLikeAction === 'disliked' ? 'filled' : 'outlined'}
-                        onClick={onDislike}
+                        onClick={onDisLike}
                     />
                 </Tooltip>
                 <span style={{paddingLeft:'8px', cursor:'auto'}}>{Dislikes}</span>
-            </span>&nbsp;&nbsp;
-        </div>
+            </span>
+        </React.Fragment>
     )
 }
 

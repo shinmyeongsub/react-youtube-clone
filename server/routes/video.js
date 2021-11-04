@@ -1,11 +1,12 @@
 const express = require('express');
 const router = express.Router();
-const { Video } = require("../models/Video");
-const {Subscriber} = require('../models/Subscriber');
-
-const { auth } = require("../middleware/auth");
 const multer = require("multer");
 var ffmpeg=require("fluent-ffmpeg");
+
+const { Video } = require("../models/Video");
+const {Subscriber} = require('../models/Subscriber');
+const { auth } = require("../middleware/auth");
+
 
 //STORAGE MULTER CONFIG
 let storage = multer.diskStorage({
@@ -92,9 +93,9 @@ router.post('/getVideoDetail', (req, res)=>{
         .populate('writer')
         .exec((err,videoDetail)=>{
             if(err) return res.status(400).send(err)
-            return res.status(200).json({success:true, videoDetail})
+            res.status(200).json({success:true, videoDetail})
         })
-})
+});
 
 router.post('/thumbnail', (req, res)=>{
     let filePath=""
